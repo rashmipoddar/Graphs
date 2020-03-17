@@ -38,6 +38,8 @@ print(graph.vertices)
 You should see something like the first example. As a stretch goal, add checks
 to your graph to ensure that edges to nonexistent vertices are rejected.
 
+The above example is adding an undirected edge to the vertex. So, graph.add_edge is creating both connections from 0 to 1 and 1 to 3. Graph.py tests use an add_edge which is directed so only one way connection happens with adding an edge
+
 ```python
 # Continuing from previous example
 graph.add_edge('0', '4')  # No '4' vertex, should raise an Exception!
