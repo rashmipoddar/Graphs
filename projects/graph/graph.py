@@ -207,22 +207,33 @@ class Graph:
         if visited is None:
             visited = set()
         visited.add(starting_vertex)
-        print('Visited: ', visited)
         path_copy = path.copy()
         path_copy.append(starting_vertex)
-        # print('Path: ', path_copy)
         if destination_vertex in visited:
             return path_copy
         for neighbor in self.get_neighbors(starting_vertex):
             if neighbor not in visited:
-                print('Neighbor: ', neighbor)
                 new_path = self.dfs_recursive(neighbor, destination_vertex, visited, path_copy)
-                print(new_path)
                 if new_path:
-                    print('new path is there')
-                    print('New Path: ', new_path)
                     return new_path
         return None
+
+        # Alternate solution
+        # if visited is None:
+        #     visited = set()
+        # if path is None:
+        #     path = []
+        # if starting_vertex not in visited:
+        #     visited.add(starting_vertex)
+        #     path_copy = path.copy()
+        #     path_copy.append(starting_vertex)
+        #     if starting_vertex == destination_vertex:
+        #         return path_copy
+        #     for neighbor in self.get_neighbors(starting_vertex):
+        #         new_path = self.dfs_recursive(neighbor, destination_vertex, visited, path_copy)
+        #         if new_path is not None:
+        #             return new_path
+        # return None
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
