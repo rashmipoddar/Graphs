@@ -152,6 +152,9 @@ class Graph:
                     # Add the neighbor to the copy
                     copy.append(neighbor)
                     # Enqueue the copy
+                    # q.enqueue([*path, neighbor])
+                    # Line 155 uses the splat(*) operator. *path creates a new array with all the items in original path and adds neighbor to it
+                    # The splat operator is like destructuring in JS
                     q.enqueue(copy)
 
 
@@ -204,13 +207,20 @@ class Graph:
         if visited is None:
             visited = set()
         visited.add(starting_vertex)
-        path.append(starting_vertex)
+        print('Visited: ', visited)
+        path_copy = path.copy()
+        path_copy.append(starting_vertex)
+        # print('Path: ', path_copy)
         if destination_vertex in visited:
-            return path
+            return path_copy
         for neighbor in self.get_neighbors(starting_vertex):
             if neighbor not in visited:
-                new_path = self.dfs_recursive(neighbor, destination_vertex, visited, path.copy())
+                print('Neighbor: ', neighbor)
+                new_path = self.dfs_recursive(neighbor, destination_vertex, visited, path_copy)
+                print(new_path)
                 if new_path:
+                    print('new path is there')
+                    print('New Path: ', new_path)
                     return new_path
         return None
 
