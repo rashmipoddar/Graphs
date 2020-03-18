@@ -1,4 +1,4 @@
-from util import Stack, Queue  # These may come in handy
+from util import Queue  # These may come in handy
 
 # Given two words (begin_word and end_word),
 # and a dictionary's word list, return the shortest transformation
